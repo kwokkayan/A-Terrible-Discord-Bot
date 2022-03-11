@@ -1,0 +1,1 @@
+ffmpeg -i test.flac -filter_complex "acrossover=split=1200 6000[LOW][MID][HIGH];[LOW]volume=1.2[VLOW];[VLOW]aformat=sample_fmts=s16:channel_layouts=stereo[OLOW];[MID]aformat=sample_fmts=s16:channel_layouts=stereo[OMID];[HIGH]aformat=sample_fmts=s16:channel_layouts=stereo[OHIGH];[OLOW][OMID][OHIGH]amerge=inputs=3" out.flac 

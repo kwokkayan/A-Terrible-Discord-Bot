@@ -1,0 +1,1 @@
+myworker: python test.py
