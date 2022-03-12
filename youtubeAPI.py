@@ -15,6 +15,6 @@ def main():
     for item in res["items"]:
         urls.append("https://www.youtube.com/watch?v=" + item["contentDetails"]["videoId"])
     print(urls)
-
+    
 if __name__ == "__main__":
     main()
