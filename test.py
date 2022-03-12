@@ -17,6 +17,7 @@ YTAPI_URL = "https://www.googleapis.com/youtube/v3/"
 FILTER = "-filter_complex \"acrossover=split=1200 6000[LOW][MID][HIGH];[LOW]volume=1.1[VLOW];[MID]volume=1.05[VMID];[HIGH]volume=1.0[VHIGH];[VLOW]aformat=sample_fmts=s16:channel_layouts=stereo[OLOW];[VMID]aformat=sample_fmts=s16:channel_layouts=stereo[OMID];[VHIGH]aformat=sample_fmts=s16:channel_layouts=stereo[OHIGH];[OLOW][OMID][OHIGH]amerge=inputs=3\""
 #FILTER = "-filter_complex \"crystalizer=i=1.15\""
 FFMPEG_OPTIONS = "-ar 48000 -b:a 128k " + FILTER
+#penis
 # REMEMBER TO CHANGE
 def parseSongData(res):
     details = []
