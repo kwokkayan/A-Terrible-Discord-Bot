@@ -6,7 +6,6 @@ import sys
 import os
 from environs import Env
 from urllib.parse import urlparse, parse_qs
-from matplotlib.image import thumbnail
 import requests
 import re
 # REMEBER TO CHANGE
