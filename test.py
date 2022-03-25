@@ -17,10 +17,9 @@ env.read_env()
 BOT_SECRET = env.str("BOT_SECRET")
 API_KEY = env.str("API_KEY")
 YTAPI_URL = "https://www.googleapis.com/youtube/v3/"
-FILTER = "-filter_complex \"acrossover=split=1200 6000[LOW][MID][HIGH];[LOW]volume=1.1[VLOW];[MID]volume=1.05[VMID];[HIGH]volume=1.0[VHIGH];[VLOW]aformat=sample_fmts=s16:channel_layouts=stereo[OLOW];[VMID]aformat=sample_fmts=s16:channel_layouts=stereo[OMID];[VHIGH]aformat=sample_fmts=s16:channel_layouts=stereo[OHIGH];[OLOW][OMID][OHIGH]amerge=inputs=3\""
+#FILTER = "-filter_complex \"acrossover=split=1200 6000[LOW][MID][HIGH];[LOW]volume=1.1[VLOW];[MID]volume=1.05[VMID];[HIGH]volume=1.0[VHIGH];[VLOW]aformat=sample_fmts=s16:channel_layouts=stereo[OLOW];[VMID]aformat=sample_fmts=s16:channel_layouts=stereo[OMID];[VHIGH]aformat=sample_fmts=s16:channel_layouts=stereo[OHIGH];[OLOW][OMID][OHIGH]amerge=inputs=3\""
 #FILTER = "-filter_complex \"crystalizer=i=1.15\""
-FFMPEG_OPTIONS = "-ar 48000 -b:a 128k " + FILTER
-#penis
+FFMPEG_OPTIONS = "-ar 48000 -b:a 128k "
 # REMEMBER TO CHANGE
 def parseSongData(res):
     details = []
@@ -31,8 +30,10 @@ def parseSongData(res):
         embed.url = "https://www.youtube.com/watch?v=" + item["id"]
         embed.set_author(name=item["snippet"]["channelTitle"], url="https://www.youtube.com/channel/"+item["snippet"]["channelId"])
         embed.set_image(url=item["snippet"]["thumbnails"]["default"]["url"])
+        # format time string -- very messy
         timestr = item["contentDetails"]["duration"]
-        out = ':'.join(re.split('[A-Z]', timestr[2:len(timestr)-1]))
+        timearr = ["{:0>2s}".format(s) for s in re.split('[A-Z]', timestr[2:len(timestr)-1])]
+        out = ':'.join(timearr)
         embed.add_field(name="video length:", value=out, inline=True)
         details.append(embed)
         count += 1
