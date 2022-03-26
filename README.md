@@ -1,4 +1,4 @@
-# Discord-Bot
+# A Terrible Discord Bot
 An awful attempt at building a discord bot for personal use.
 ## Installing Dependencies locally
 1. Python Libraries: [Youtube-dl](http://ytdl-org.github.io/youtube-dl/), [discord.py](https://github.com/Rapptz/discord.py), and others. Install [pipenv](https://pipenv.pypa.io/en/latest/) to get them.
